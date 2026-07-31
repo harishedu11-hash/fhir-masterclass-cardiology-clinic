@@ -1,0 +1,623 @@
+{
+  "info": {
+    "_postman_id": "bf5f8616-3ced-4e08-a42f-88a0844f4061",
+    "name": "FHIR Masterclass - Cardiology Clinic",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52679917",
+    "_collection_link": "https://go.postman.co/collection/52679917-bf5f8616-3ced-4e08-a42f-88a0844f4061?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Project 1 - Core Anatomy",
+      "item": [
+        {
+          "name": "1.1 Onboard Patient (Luke)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"text\": {\r\n    \"status\": \"generated\",\r\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">Mr. Luke Skywalker, Male, Born 1977-05-25</div>\"\r\n  },\r\n  \"active\": true,\r\n  \"name\": [\r\n    {\r\n      \"use\": \"official\",\r\n      \"family\": \"Skywalker\",\r\n      \"given\": [\r\n        \"Luke\"\r\n      ],\r\n      \"prefix\": [\r\n        \"Mr.\"\r\n      ]\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1977-05-25\",\r\n  \"telecom\": [\r\n    {\r\n      \"system\": \"phone\",\r\n      \"value\": \"555-123-4567\",\r\n      \"use\": \"mobile\"\r\n    }\r\n  ],\r\n  \"address\": [\r\n    {\r\n      \"use\": \"home\",\r\n      \"line\": [\r\n        \"100 Moisture Farm Way\"\r\n      ],\r\n      \"city\": \"Tatooine\",\r\n      \"postalCode\": \"90210\",\r\n      \"country\": \"USA\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "1.2 Register Patient with Extension (Leia)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"extension\": [\r\n    {\r\n      \"url\": \"http://hl7.org/fhir/StructureDefinition/patient-language\",\r\n      \"extension\": [\r\n        {\r\n          \"url\": \"value\",\r\n          \"valueCodeableConcept\": {\r\n            \"coding\": [\r\n              {\r\n                \"system\": \"urn:ietf:bcp:47\",\r\n                \"code\": \"en\",\r\n                \"display\": \"English\"\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"text\": {\r\n    \"status\": \"generated\",\r\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">Princess Leia Organa, Female</div>\"\r\n  },\r\n  \"active\": true,\r\n  \"name\": [\r\n    {\r\n      \"use\": \"official\",\r\n      \"family\": \"Organa\",\r\n      \"given\": [\r\n        \"Leia\"\r\n      ],\r\n      \"prefix\": [\r\n        \"Princess\"\r\n      ]\r\n    }\r\n  ],\r\n  \"gender\": \"female\",\r\n  \"birthDate\": \"1977-05-25\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Project 2 - Basic CRUD",
+      "item": [
+        {
+          "name": "2.1 Get Patient (Luke)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2.2 Update Patient Address (Luke)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"1000\",\r\n  \"text\": {\r\n    \"status\": \"generated\",\r\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">Mr. Luke Skywalker, Male, Born 1977-05-25 (Updated Address)</div>\"\r\n  },\r\n  \"active\": true,\r\n  \"name\": [\r\n    {\r\n      \"use\": \"official\",\r\n      \"family\": \"Skywalker\",\r\n      \"given\": [\r\n        \"Luke\"\r\n      ],\r\n      \"prefix\": [\r\n        \"Mr.\"\r\n      ]\r\n    }\r\n  ],\r\n  \"telecom\": [\r\n    {\r\n      \"system\": \"phone\",\r\n      \"value\": \"555-999-8888\",\r\n      \"use\": \"mobile\"\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1977-05-25\",\r\n  \"address\": [\r\n    {\r\n      \"use\": \"home\",\r\n      \"line\": [\r\n        \"500 Lars Homestead Way\"\r\n      ],\r\n      \"city\": \"Tatooine\",\r\n      \"postalCode\": \"90210\",\r\n      \"country\": \"USA\"\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2.3: Safe Conditional Create (Han)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              },
+              {
+                "key": "If-None-Match",
+                "value": "identifier=[http://hospital.org/mrn](http://hospital.org/mrn)|MRN-555",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"identifier\": [\r\n    {\r\n      \"system\": \"http://hospital.org/mrn\",\r\n      \"value\": \"MRN-555\"\r\n    }\r\n  ],\r\n  \"name\": [\r\n    {\r\n      \"use\": \"official\",\r\n      \"family\": \"Solo\",\r\n      \"given\": [\r\n        \"Han\"\r\n      ]\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1970-01-01\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "2.4 Delete Patient (Temp)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"name\": [{ \"family\": \"DeleteTest\", \"given\": [\"Temp\"] }]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1003",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1003"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Project 3 - Basic Search",
+      "item": [
+        {
+          "name": "3.1 Search by Gender",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Observation\",\r\n  \"status\": \"final\",\r\n  \"category\": [\r\n    {\r\n      \"coding\": [\r\n        {\r\n          \"system\": \"http://terminology.hl7.org/CodeSystem/observation-category\",\r\n          \"code\": \"vital-signs\",\r\n          \"display\": \"Vital Signs\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"code\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://loinc.org\",\r\n        \"code\": \"8867-4\",\r\n        \"display\": \"Heart rate\"\r\n      }\r\n    ],\r\n    \"text\": \"Heart rate\"\r\n  },\r\n  \"subject\": {\r\n    \"reference\": \"Patient/1000\"\r\n  },\r\n  \"effectiveDateTime\": \"2026-07-31T08:00:00Z\",\r\n  \"valueQuantity\": {\r\n    \"value\": 110,\r\n    \"unit\": \"beats/minute\",\r\n    \"system\": \"http://unitsofmeasure.org\",\r\n    \"code\": \"/min\"\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient?gender=male",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ],
+              "query": [
+                {
+                  "key": "gender",
+                  "value": "male"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.2 Substring Match Search with Modifiers (:contains)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient?name:contains=Sky",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ],
+              "query": [
+                {
+                  "key": "name:contains",
+                  "value": "Sky"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.2 Case-Sensitive Match Search with Modifiers (:exact)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient?family:exact=Skywalker",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ],
+              "query": [
+                {
+                  "key": "family:exact",
+                  "value": "Skywalker"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.3 Search by Quantity (gt100)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Observation?value-quantity=gt100",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Observation"
+              ],
+              "query": [
+                {
+                  "key": "value-quantity",
+                  "value": "gt100"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "3.4 Search by Date Range",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Observation?date=ge2026-01-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Observation"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "ge2026-01-01"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Project 4 - Relationships & Advanced Search",
+      "item": [
+        {
+          "name": "4.1 Chained Search (patient.family)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Observation?patient.family=Skywalker",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Observation"
+              ],
+              "query": [
+                {
+                  "key": "patient.family",
+                  "value": "Skywalker"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.2 Reverse Chaining (_has)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient?_has:Observation:patient:code=8867-4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ],
+              "query": [
+                {
+                  "key": "_has:Observation:patient:code",
+                  "value": "8867-4"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.3 Include Referenced Resource (_include)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Observation?_id=1004&_include=Observation:patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Observation"
+              ],
+              "query": [
+                {
+                  "key": "_id",
+                  "value": "1004"
+                },
+                {
+                  "key": "_include",
+                  "value": "Observation:patient"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "4.4 Reverse Include (_revinclude)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient?_id=1000&_revinclude=Observation:patient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient"
+              ],
+              "query": [
+                {
+                  "key": "_id",
+                  "value": "1000"
+                },
+                {
+                  "key": "_revinclude",
+                  "value": "Observation:patient"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Project 5 - Integrity & History",
+      "item": [
+        {
+          "name": "5.1 Get Resource History",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1000/_history",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1000",
+                "_history"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.2 Version Read (vread)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1000/_history/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1000",
+                "_history",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.3 Safe Update with If-Match",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              },
+              {
+                "key": "If-Match",
+                "value": "W/\"2\"",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"1000\",\r\n  \"text\": {\r\n    \"status\": \"generated\",\r\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">Mr. Luke Skywalker (Version 3 Update)</div>\"\r\n  },\r\n  \"active\": true,\r\n  \"name\": [\r\n    {\r\n      \"use\": \"official\",\r\n      \"family\": \"Skywalker\",\r\n      \"given\": [\r\n        \"Luke\"\r\n      ]\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1977-05-25\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "5.4 Trigger Concurrency Conflict",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "If-Match",
+                "value": "W/\"1\"",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/fhir+json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"resourceType\": \"Patient\",\r\n  \"id\": \"1000\",\r\n  \"text\": {\r\n    \"status\": \"generated\",\r\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">Mr. Luke Skywalker</div>\"\r\n  },\r\n  \"active\": true,\r\n  \"name\": [\r\n    {\r\n      \"use\": \"official\",\r\n      \"family\": \"Skywalker\",\r\n      \"given\": [\"Luke\"]\r\n    }\r\n  ],\r\n  \"gender\": \"male\",\r\n  \"birthDate\": \"1977-05-25\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fhir/Patient/1000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fhir",
+                "Patient",
+                "1000"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
