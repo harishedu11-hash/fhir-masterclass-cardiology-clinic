@@ -1,0 +1,4 @@
+Patient_ID,FHIR_Reference,Age,Gender_Concept_ID,Is_Male,Total_Inpatient_Visits,Mean_Heart_Rate_BPM,Max_Heart_Rate_BPM,Heart_Rate_Measurement_Count,Cardiometabolic_Risk_Score,Risk_Category
+1000,Patient/1000,49,8507,1,20,110.0,110.0,1,18.48,
+1001,Patient/1001,49,8532,0,0,75.0,75.0,0,0.98,Low
+1002,Patient/1002,56,8507,1,0,75.0,75.0,0,1.12,Low
