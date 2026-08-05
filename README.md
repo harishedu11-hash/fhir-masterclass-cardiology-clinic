@@ -1,4 +1,4 @@
-HL7 FHIR Practical Masterclass (Postman + HAPI FHIR)
+**HL7 FHIR Practical Masterclass (Postman + HAPI FHIR)**
 
 
 A hands-on implementation of HL7 FHIR (Fast Healthcare Interoperability Resources) RESTful API capabilities built and tested using \*\*Postman\*\* against a local \*\*Dockerized HAPI FHIR JPA Server\*\*.
@@ -7,20 +7,21 @@ A hands-on implementation of HL7 FHIR (Fast Healthcare Interoperability Resource
 \---
 
 
-Projects Overview
+**Projects Overview**
 
 
 This repository contains a complete Postman collection covering real-world clinical workflow scenarios across \*\*Categories 1–5\*\* of the FHIR specification:
 
 
-Project 1: Core Resource Anatomy \& Modeling
+**Project 1: Core Resource Anatomy \& Modeling**
 
   \* \*\*Concepts:\*\* Primitive vs. Complex Data Types (`HumanName`, `ContactPoint`, `Address`), XHTML Narratives (`text.div`), and custom extensions.
 
   \* \*\*Payloads Built:\*\* Manual construction of standard `Patient` resources and `US Core Patient Language` extensions.
+  
 
 
-Project 2: Basic CRUD \& Safe Operations
+**Project 2: Basic CRUD \& Safe Operations**
 
   \* \*\*Concepts:\*\* HTTP Verbs (`POST`, `GET`, `PUT`, `DELETE`), Idempotent Operations, and Logical Deletions.
 
@@ -34,7 +35,7 @@ Project 2: Basic CRUD \& Safe Operations
 
 
 
-Project 3: Clinic Directory \& Advanced Filtering
+**Project 3: Clinic Directory \& Advanced Filtering**
 
   \* \*\*Concepts:\*\* RESTful Search Parameters, Modifiers, Numeric/Date Prefixes, and `searchset` Bundle parsing.
 
@@ -48,7 +49,7 @@ Project 3: Clinic Directory \& Advanced Filtering
 
 
 
-Project 4: Connected Patient Charts \& Relationship Traversal
+**Project 4: Connected Patient Charts \& Relationship Traversal**
 
   \* \*\*Concepts:\*\* Reference Modeling (`subject.reference`), Chained Searching, Reverse Chaining, and Payload Optimization.
 
@@ -64,7 +65,7 @@ Project 4: Connected Patient Charts \& Relationship Traversal
 
 
 
-Project 5: Audit Trail \& Concurrency Control
+**Project 5: Audit Trail \& Concurrency Control**
 
   \* \*\*Concepts:\*\* Audit logging, historical version reads, and Optimistic Concurrency Control (OCC).
 
