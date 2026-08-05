@@ -1,4 +1,4 @@
-\# 🏥 HL7 FHIR Practical Masterclass (Postman + HAPI FHIR)
+\HL7 FHIR Practical Masterclass (Postman + HAPI FHIR)
 
 
 
@@ -10,7 +10,7 @@ A hands-on implementation of HL7 FHIR (Fast Healthcare Interoperability Resource
 
 
 
-\## 🚀 Projects Overview
+\Projects Overview
 
 
 
@@ -18,7 +18,7 @@ This repository contains a complete Postman collection covering real-world clini
 
 
 
-\### 🏥 Project 1: Core Resource Anatomy \& Modeling
+\Project 1: Core Resource Anatomy \& Modeling
 
 \* \*\*Concepts:\*\* Primitive vs. Complex Data Types (`HumanName`, `ContactPoint`, `Address`), XHTML Narratives (`text.div`), and custom extensions.
 
@@ -26,7 +26,7 @@ This repository contains a complete Postman collection covering real-world clini
 
 
 
-\### 📝 Project 2: Basic CRUD \& Safe Operations
+\Project 2: Basic CRUD \& Safe Operations
 
 \* \*\*Concepts:\*\* HTTP Verbs (`POST`, `GET`, `PUT`, `DELETE`), Idempotent Operations, and Logical Deletions.
 
@@ -40,7 +40,7 @@ This repository contains a complete Postman collection covering real-world clini
 
 
 
-\### 🔍 Project 3: Clinic Directory \& Advanced Filtering
+\Project 3: Clinic Directory \& Advanced Filtering
 
 \* \*\*Concepts:\*\* RESTful Search Parameters, Modifiers, Numeric/Date Prefixes, and `searchset` Bundle parsing.
 
@@ -54,7 +54,7 @@ This repository contains a complete Postman collection covering real-world clini
 
 
 
-\### 🔗 Project 4: Connected Patient Charts \& Relationship Traversal
+\Project 4: Connected Patient Charts \& Relationship Traversal
 
 \* \*\*Concepts:\*\* Reference Modeling (`subject.reference`), Chained Searching, Reverse Chaining, and Payload Optimization.
 
@@ -70,7 +70,7 @@ This repository contains a complete Postman collection covering real-world clini
 
 
 
-\### ⏳ Project 5: Audit Trail \& Concurrency Control
+\Project 5: Audit Trail \& Concurrency Control
 
 \* \*\*Concepts:\*\* Audit logging, historical version reads, and Optimistic Concurrency Control (OCC).
 
